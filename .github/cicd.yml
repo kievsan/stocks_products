@@ -66,7 +66,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.DB_PASSWORD }}
-          script: |
-            pwd=password
-            enter="\r"
-            expect /home/kievs/stocks_products/pull.exp
+          script: expect /home/kievs/stocks_products/pull.exp
