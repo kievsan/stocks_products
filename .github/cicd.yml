@@ -1,6 +1,7 @@
 on:
   push:
 	branches: [cicd]
+
 jobs:
   tests:
     runs-on: ubuntu-22.04
@@ -65,4 +66,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.DB_PASSWORD }}
-          script: expect /home/kievs/stocks_products/pull.exp
+          script: |
+            pwd=password
+            enter="\r"
+            expect /home/kievs/stocks_products/pull.exp
