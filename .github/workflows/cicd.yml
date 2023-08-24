@@ -1,6 +1,8 @@
+name: Развертывание и тестирование Django-приложения
+
 on:
   push:
-	branches: [ cicd ]
+	branches: [cicd]
 
 jobs:
   tests:
