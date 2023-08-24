@@ -1,4 +1,4 @@
-name: Развертывание и тестирование Django-приложения
+name: Авто тестирование и развертывание Django-приложения
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
           POSTGRES_USER: ${{ env.DB_USER }}
           POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
         ports:
-          - 5432: 5432
+          - 5432:5432
         options:
           --health_cmd pg_isready
           --health_interval 5s
