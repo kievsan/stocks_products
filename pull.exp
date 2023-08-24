@@ -1,0 +1,5 @@
+#!/bin/bash/expect
+spawn /home/kievs/stocks_products/pull.sh
+expect "password"
+send -- $pwd$enter
+expect eof
