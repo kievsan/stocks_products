@@ -27,7 +27,8 @@ class StockSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         # связанные данные для других таблиц
-        # в validated_date - json запрос с полями 'address' и 'positions'
+        # в validated_date - json запрос с полями
+        # 'address' и 'positions'
 
         # в positions сохраняем только поле 'positions'
         positions = validated_data.pop('positions')
@@ -39,7 +40,8 @@ class StockSerializer(serializers.ModelSerializer):
         # заполним связанные таблицы
         # StockProduct с помощью списка positions
 
-        # перебираем все positions и создаем для каждой объект модели StockProduct,
+        # перебираем все positions
+        # и создаем для каждой объект модели StockProduct,
         # где stock=stock - это ссылка на склад, созданный только что
         for position in positions:
             StockProduct.objects.create(
@@ -58,7 +60,8 @@ class StockSerializer(serializers.ModelSerializer):
         positions = validated_data.pop('positions')
 
         # обновляем склад по его параметрам
-        # в instance - склад, передаем только поле positions (validated_data пусто)
+        # в instance - склад, передаем только поле positions
+        # (validated_data пусто)
 
         stock = super().update(instance, validated_data)
 

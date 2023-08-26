@@ -21,7 +21,11 @@ class StockViewSet(ModelViewSet):
     serializer_class = StockSerializer
     # при необходимости добавьте параметры фильтрации
     filter_backends = [SearchFilter]
-    search_fields = ['products__id', 'products__title', 'products__description']
+    search_fields = [
+        'products__id',
+        'products__title',
+        'products__description'
+    ]
 
 
 class Hi(APIView):

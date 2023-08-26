@@ -7,4 +7,5 @@ router = DefaultRouter()
 router.register('products', ProductViewSet)
 router.register('stocks', StockViewSet)
 
-urlpatterns = [path('', Hi.as_view())] + router.urls   # urlpatterns = router.urls
+urlpatterns = [path('', Hi.as_view())] \
+              + router.urls     # urlpatterns = router.urls
