@@ -30,4 +30,4 @@ class StockViewSet(ModelViewSet):
 
 class Hi(APIView):
     def get(self, request):
-        return Response('Hi, people!')
+        return Response('Hi, people!!!')
