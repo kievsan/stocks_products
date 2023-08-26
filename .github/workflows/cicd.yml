@@ -37,8 +37,8 @@ jobs:
       - name: Проверяем репозиторий на наличие изменений
         uses: actions/checkout@v3
 
-      - name: Установка Python, pip и вирт.окружения
-        uses: actions/setup-python@v3
+      - name: Установка Python
+        uses: actions/setup-python@v2
         with:
           python-version: 3.10
 
