@@ -1,0 +1,84 @@
+version: '3.10'
+
+volumes:
+  pgdata:
+  static_files:
+
+networks:
+  backend:
+  frontend:
+
+services:
+  webapi:
+    build: .
+    ports:
+      - "8000:9000"
+    depends_on:
+      - postgres_db
+    env_file:
+      - .env
+    volumes:
+      - static_files:/project/static
+    networks:
+      - backend
+      - frontend
+    command: >
+      sh -c "python manage.py makemigrations && python manage.py migrate \
+            && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
+
+  postgres_db:
+    image: 'postgres:latest'
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_DB: 'netology_stocks_products'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'pstpwd'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", pg_isready -U admin -d netology_stocks_products]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - "5050:80"
+    container_name: pgadmin
+    depends_on:
+      - postgres_db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "aaa@yandex.ru"
+      PGADMIN_DEFAULT_PASSWORD: "111"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - ./services/pgadmin:/var/lib/pgadmin
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
+
+  nginx:
+    image: 'nginx'
+    ports:
+      - '80:80'
+    depends_on:
+      - webapi
+      - postgresql
+    volumes:
+      - ./services/nginx/config:/etc/nginx/conf.d
+      - static_files:/var/www/html/static
+    networks:
+      - frontend
+
+
+
+
+
