@@ -71,7 +71,7 @@ services:
       - '80:80'
     depends_on:
       - webapi
-      - postgresql
+      - postgres_db
     volumes:
       - ./services/nginx/config:/etc/nginx/conf.d
       - static_files:/var/www/html/static
