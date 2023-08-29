@@ -1,0 +1,9 @@
+SECRET_KEY='django-insecure-nw^y+m^wmxza1asgk+)!ua2qx9)g+#v=6%76-9i8i(6eqiw94j'
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,0.0.0.0,194.67.65.53
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=dj_3_2_stocks_products
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_USER=dj
+DB_PASSWORD=75321

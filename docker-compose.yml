@@ -16,7 +16,7 @@ services:
     depends_on:
       - postgres_db
     env_file:
-      - .env
+      - docker-compose-env
     volumes:
       - static_files:/project/static
     networks:
