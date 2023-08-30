@@ -18,6 +18,6 @@ COPY . .
 #    python3 manage.py makemigrations && \
 #    python3 manage.py migrate --run-syncdb
 
-EXPOSE 8000
+EXPOSE 9000
 
 #CMD gunicorn stocks_products.wsgi -b 0.0.0.0:8000
