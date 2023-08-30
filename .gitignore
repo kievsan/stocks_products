@@ -21,6 +21,7 @@ logs
 
 ### Project specific ###
 settings_local.py
+services/pgadmin
 
 ### OS specific ###
 .DS_Store
