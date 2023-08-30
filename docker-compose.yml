@@ -12,7 +12,7 @@ services:
   webapi:
     build: .
     ports:
-      - "8000:9000"
+      - '8000:9000'
     depends_on:
       - postgres_db
     env_file:
@@ -68,7 +68,7 @@ services:
   nginx:
     image: 'nginx'
     ports:
-      - '80:80'
+      - '8080:9080'
     depends_on:
       - webapi
       - postgres_db
@@ -77,8 +77,3 @@ services:
       - static_files:/var/www/html/static
     networks:
       - frontend
-
-
-
-
-
