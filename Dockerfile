@@ -6,7 +6,7 @@ ENV SECRET_KEY=rdd3g7+@w@_zd#^#uxywgdf&3#nn8+_e3s3s2_$q@i=tk6^o5- \
 #    DB_ENGINE=django.db.backends.sqlite3 \
 #    DB_NAME=db.sqlite3
 
-RUN mkdir /web_django; \
+#RUN mkdir /web_django
 WORKDIR /web_django
 
 COPY requirements.txt .
