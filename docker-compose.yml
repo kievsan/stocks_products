@@ -24,7 +24,7 @@ services:
       - frontend
     command: >
       sh -c "python manage.py makemigrations && python manage.py migrate \
-            && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
+        && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
 
   postgres_db:
     image: 'postgres:latest'
