@@ -24,6 +24,11 @@ services:
       - frontend
     command: >
       sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
 
   postgres_db:
     image: 'postgres:latest'
@@ -46,6 +51,11 @@ services:
       retries: 3
       start_period: 20s
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
 
   pgadmin:
     image: dpage/pgadmin4:latest
