@@ -10,7 +10,8 @@ ENV SECRET_KEY='rdd3g7+@w@_zd#^#uxywgdf&3#nn8+_e3s3s2_$q@i=tk6^o5-' \
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt \
+    && apt install curl
 
 COPY . .
 
@@ -20,4 +21,4 @@ COPY . .
 
 EXPOSE 9000
 
-#CMD gunicorn stocks_products.wsgi -b 0.0.0.0:8000
+#CMD gunicorn stocks_products.wsgi -b 0.0.0.0:9000
