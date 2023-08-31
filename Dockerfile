@@ -1,13 +1,13 @@
 FROM python:3.10
 
-ENV SECRET_KEY=rdd3g7+@w@_zd#^#uxywgdf&3#nn8+_e3s3s2_$q@i=tk6^o5- \
+ENV SECRET_KEY='rdd3g7+@w@_zd#^#uxywgdf&3#nn8+_e3s3s2_$q@i=tk6^o5-' \
     DEBUG=False \
     ALLOWED_HOSTS=*
 #    DB_ENGINE=django.db.backends.sqlite3 \
 #    DB_NAME=db.sqlite3
 
-#RUN [ "sh", "-c", "makedir /api" ]
-WORKDIR /api
+#RUN [ "sh", "-c", "makedir /app" ]
+WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt

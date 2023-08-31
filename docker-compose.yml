@@ -23,27 +23,28 @@ services:
       - backend
       - frontend
     command: >
-      sh -c "python manage.py makemigrations && python manage.py migrate \
-        && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
+      sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn stocks_products.wsgi:application --bind 0.0.0.0:9000"
 
   postgres_db:
     image: 'postgres:latest'
     ports:
-      - '5433:5432'
+      - '5432:5432'
+#    env_file:
+#      - docker-compose-env
     environment:
-      POSTGRES_DB: 'netology_stocks_products'
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'pstpwd'
+      POSTGRES_DB: 'dj_3_2_stocks_products'
+      POSTGRES_USER: 'dj'
+      POSTGRES_PASSWORD: '75321'
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
       - backend
     healthcheck:
-      test: ["CMD-SHELL", pg_isready -U admin -d netology_stocks_products]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
+      test: ["CMD-SHELL", "pg_isready -U dj -d dj_3_2_stocks_products"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 20s
     restart: unless-stopped
 
   pgadmin:
@@ -71,7 +72,7 @@ services:
       - '8080:9080'
     depends_on:
       - webapi
-      - postgres_db
+#      - postgres_db
     volumes:
       - ./services/nginx/config:/etc/nginx/conf.d
       - static_files:/var/www/html/static
