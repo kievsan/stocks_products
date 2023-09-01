@@ -37,11 +37,11 @@ services:
       - '5431:5432'
     container_name: pg_db
 #    env_file:
-#      - docker-compose-env
+#      - .env
     environment:
-      POSTGRES_DB: 'dj_3_2_stocks_products'
-      POSTGRES_USER: 'dj'
-      POSTGRES_PASSWORD: '75321'
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
