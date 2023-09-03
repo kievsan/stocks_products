@@ -15,9 +15,11 @@ services:
       - '8000:9000'
     container_name: web
     depends_on:
-      - postgres_db
+      postgres_db:
+        condition: service_healthy
     env_file:
-      - docker-compose-env
+#      - docker-compose-env
+      - .env
     volumes:
       - static_files:/project/static
     networks:
