@@ -1,3 +1,15 @@
+### Поднять Django приложение с помощью Docker Compose
+
+1. Склонируйте репозиторий приложения [CRUD: Склады и запасы](https://github.com/kievsan/stocks_products/tree/docker-compose): 
+    ```
+    git clone --branch docker-compose --single-branch https://github.com/kievsan/stocks_products
+    ```
+2. Перейдите в директорию проекта stocks_products, затем выполните:
+    ```
+    docker-compose up --build -d
+    ```
+
+
 # Склады и товары
 
 ## Техническая задача: реализовать CRUD-логику для продуктов и складов, используя Django Rest Framework.
